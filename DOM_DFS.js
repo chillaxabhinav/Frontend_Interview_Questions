@@ -3,7 +3,8 @@
 
 // If you want to know that node is equal or not then. There is a function on each Node i.e. isEqualNode(toCompare)
 
-// To get child element, you use children property to get all element. To get node element you use childNodes property that give you NodeList
+// To get child element, you use children property to get all element.
+// To get node element you use childNodes property that give you NodeList
 
 function DfsTraversal(parent) {
     const children = parent.children;
