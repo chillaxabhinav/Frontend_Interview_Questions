@@ -13,7 +13,8 @@ function App() {
 		}
 	*/
 	const [todos, setTodos] = useState([]);
-	const [mode, setMode] = useState(false);
+	const [editMode, setEditMode] = useState(false);
+	const [editTodoId, setEditTodoId] = useState(null);
 
 	const addTodos = () => {
 		const currentText = inputRef.current.value;
@@ -21,24 +22,48 @@ function App() {
 			alert("Please add valid task");
 			return
 		}
-		const newTodo = {
-			text: currentText,
-			id: nanoid()
+		if (!editMode) {
+			// add mode
+			const newTodo = {
+				text: currentText.trim(),
+				id: nanoid()
+			}
+			const newTodoList = todos.slice().map(ele => structuredClone(ele));
+			// add todo at top
+			newTodoList.unshift(newTodo);
+			setTodos(newTodoList);
+		} else {
+			// edit mode
+			const newTodoList = todos.map((ele) => {
+				if (ele.id === editTodoId) {
+					return {
+						...ele,
+						text: currentText
+					}
+				}
+				return {
+					...ele
+				};
+			});
+			setTodos(newTodoList);
+			setEditMode(false);
+			setEditTodoId(null);
 		}
-		const newTodoList = todos.slice().map(ele => structuredClone(ele));
-		// add todo at top
-		newTodoList.unshift(newTodo);
-		setTodos(newTodoList);
 		inputRef.current.value = "";
 	};
 
 	const onClickTodo = (e) => {
 		const currentEle = e.target;
 		if (currentEle.tagName === 'BUTTON') {
-			const todoId = currentEle.parentElement.getAttribute('data-index');
+			const clickedTodo = currentEle.parentElement;
+			const todoId = clickedTodo.getAttribute('data-index');
 			if (currentEle.innerText === 'Delete') {
 				const filteredTodos = todos.filter(todo => todo.id !== todoId);
 				setTodos(filteredTodos);
+			} else if (currentEle.innerText === 'Edit') {
+				inputRef.current.value = clickedTodo.firstChild.innerText;
+				setEditMode(true);
+				setEditTodoId(todoId);
 			}
 		}
 	}
@@ -48,7 +73,7 @@ function App() {
 			<div>
 				<h1>Todo List React</h1>
 				<input type='text' placeholder='Write some task' ref={inputRef} />
-				<button onClick={() => addTodos()}>Add Todo</button>
+				<button onClick={() => addTodos()}>{editMode ? 'Edit Todo' : 'Add Todo'}</button>
 			</div>
 			<ul onClick={(e) => onClickTodo(e)}>
 				{todos.map((todo) => {
