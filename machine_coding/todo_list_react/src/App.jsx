@@ -1,7 +1,6 @@
 import { nanoid } from 'nanoid';
 
 import { useState, useRef } from 'react'
-import './App.css'
 
 function App() {
 	const inputRef = useRef(null);
@@ -52,6 +51,7 @@ function App() {
 		inputRef.current.value = "";
 	};
 
+	// rather than doing event delegation, You can put events on each child. So that you can get id quickly and make app more simple
 	const onClickTodo = (e) => {
 		const currentEle = e.target;
 		if (currentEle.tagName === 'BUTTON') {
