@@ -1,5 +1,62 @@
-* {
-    margin: 0;
-    padding: 0;
+#root {
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
+
+.app-body {
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.app-header {
+    height: 10vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: brown;
+}
+
+.app-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.app-main-left, .app-main-right, .app-main-middle {
+    border: 1px solid black;
+    height: 76vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-main-middle {
+    flex-grow: 8;
+    background-color: lightgray;
+}
+
+.app-main-left {
+    flex-grow: 1;
+    background-color: lightpink;
+}
+
+.app-main-right {
+    flex-grow: 1;
+    background-color: lightblue;
+}
+
+.app-footer {
+    height: 10vh;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+}
+
