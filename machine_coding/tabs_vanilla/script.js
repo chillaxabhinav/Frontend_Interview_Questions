@@ -46,21 +46,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabData = document.querySelector(".tab-data");
 
     tabsContainer.addEventListener("click", function (e) {
-        const newTabId = e.target.getAttribute('data-id');
-        const newTabsData = initialTabsData.map(tab => {
-            if (tab.id == newTabId) {
+        // remember this target.classList
+        if (!e.target.classList.contains("active")) {
+            // remember getAttribute, also you can use setAttribute
+            const newTabId = e.target.getAttribute('data-id');
+            const newTabsData = initialTabsData.map(tab => {
+                if (tab.id == newTabId) {
+                    return {
+                        ...tab,
+                        selected: true
+                    }
+                }
                 return {
                     ...tab,
-                    selected: true
+                    selected: false
                 }
-            }
-            return {
-                ...tab,
-                selected: false
-            }
-        });
-        currentTabData = newTabsData;
-        render();
+            });
+            currentTabData = newTabsData;
+            render();
+        }
     });
 
     function render () {
