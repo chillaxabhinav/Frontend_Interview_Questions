@@ -3,7 +3,7 @@ const initialTabsData = [
         id: 1,
         name: 'first',
         data: "I am tab first data",
-        selected: true
+        selected: false
     },
     {
         id: 2,
@@ -16,6 +16,12 @@ const initialTabsData = [
         name: 'third',
         data: "I am tab third data",
         selected: false
+    },
+    {
+        id: 4,
+        name: 'fourth',
+        data: "I am tab fourth data",
+        selected: true
     }
 ];
 
