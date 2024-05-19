@@ -28,20 +28,22 @@ const initialTabsData = [
 function makeTabsHtml (tabsData) {
     let tabsHtml = "";
     tabsData.forEach(tab => {
-        tabsHtml += `<div class="tab${tab.selected ? ' active' : ""}" data-id=${tab.id}>${tab.name}</div>\n`;
+        tabsHtml += `
+            <div class="tab${tab.selected ? ' active' : ""}" data-id=${tab.id}>
+                ${tab.name}
+            </div>\n
+        `;
     });
     const selectedTabData = tabsData.find(tab => tab.selected === true)?.data || "";
     return { tabsHtml, selectedTabData };
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // current tab state
+    let currentTabData = [...initialTabsData];
 
     const tabsContainer = document.querySelector(".tab-container");
-    const { tabsHtml, selectedTabData } = makeTabsHtml(initialTabsData);
-    tabsContainer.innerHTML = tabsHtml;
-
     const tabData = document.querySelector(".tab-data");
-    tabData.innerHTML = selectedTabData;
 
     tabsContainer.addEventListener("click", function (e) {
         const newTabId = e.target.getAttribute('data-id');
@@ -57,8 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 selected: false
             }
         });
-        const { selectedTabData, tabsHtml } = makeTabsHtml(newTabsData);
+        currentTabData = newTabsData;
+        render();
+    });
+
+    function render () {
+        const { tabsHtml, selectedTabData } = makeTabsHtml(currentTabData);
         tabsContainer.innerHTML = tabsHtml;
         tabData.innerHTML = selectedTabData;
-    });
+    };
+
+    // initial render
+    render();
 })
