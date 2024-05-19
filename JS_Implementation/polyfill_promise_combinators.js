@@ -55,12 +55,8 @@ Array.prototype.myRace = function(promises) {
     return new Promise((resolve, reject) => {
         if (Array.isArray(promises) && promises.length === 0) resolve(undefined);
         // handle not array case as well
-        let pending = promises.length;
         promises.forEach((promise) => {
-            promise.then(res => {
-                pending -= 1;
-                resolve(res);
-            }).catch(err => reject(err)) 
+            promise.then(res => resolve(res)).catch(err => reject(err)) 
         })
     })
 }
@@ -70,20 +66,15 @@ Promise.any
 
 returns an error or success of the first promsie resolved be it success or error
 */
-Array.prototype.myRace = function(promises) {
+Array.prototype.myAny = function(promises) {
     return new Promise((resolve, reject) => {
         if (Array.isArray(promises) && promises.length === 0) resolve(undefined);
         // handle not array case as well
         let pending = promises.length;
         promises.forEach((promise) => {
-            promise.then(res => {
+            promise.then(res => resolve(res)).catch(() => {
                 pending -= 1;
-                resolve(res);
-            }).catch(() => {
-                pending -= 1;
-                if (pending === 0) {
-                    reject("All promises failed");
-                }
+                if (pending === 0) reject("All promises failed");
             }) 
         })
     })
