@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     todoList.addEventListener("click", function (e) {
         const target = e.target;
         if (target.tagName === 'BUTTON') {
-            const todoItem = target.parentNode;
+            const todoItem = target.parentElement;
             if (target.innerText === 'Remove') {
                 todoItem.remove();
             } else if (target.innerText === 'Edit') {
