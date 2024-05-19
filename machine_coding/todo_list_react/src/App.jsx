@@ -16,7 +16,7 @@ function App() {
 	const [editMode, setEditMode] = useState(false);
 	const [editTodoId, setEditTodoId] = useState(null);
 
-	const addTodos = () => {
+	const todoSubmit = () => {
 		const currentText = inputRef.current.value;
 		if (currentText === "") {
 			alert("Please add valid task");
@@ -73,7 +73,7 @@ function App() {
 			<div>
 				<h1>Todo List React</h1>
 				<input type='text' placeholder='Write some task' ref={inputRef} />
-				<button onClick={() => addTodos()}>{editMode ? 'Edit Todo' : 'Add Todo'}</button>
+				<button onClick={() => todoSubmit()}>{editMode ? 'Edit Todo' : 'Add Todo'}</button>
 			</div>
 			<ul onClick={(e) => onClickTodo(e)}>
 				{todos.map((todo) => {
