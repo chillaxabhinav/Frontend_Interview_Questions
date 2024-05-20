@@ -1,0 +1,32 @@
+.tab-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+    gap: 10px;
+}
+
+.tab-content {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    gap: 10px;
+}
+
+.tab {
+    padding: 10px;
+}
+
+.tab:hover {
+    background-color: skyblue;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: burlywood;
+}
