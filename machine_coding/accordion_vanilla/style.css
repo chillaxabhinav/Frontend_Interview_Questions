@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.accordion-header {
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 0px 10px;
+}
+
+.accordion-header:hover {
+    background-color: aliceblue;
+}
+
+.accordion-header.active {
+    background-color: skyblue;
+}
+
+.accordion-content {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 0px 40px 0px 40px;
+}
+
+.accordion-content.hidden {
+    display: none;
+}
