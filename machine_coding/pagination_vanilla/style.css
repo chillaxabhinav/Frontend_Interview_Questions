@@ -15,3 +15,22 @@
     border: 1px solid gray;
     border-radius: 5px;
 }
+
+.pagination {
+    margin: 50px 0px;
+    text-align: center;
+}
+
+.pagination__button {
+    padding: 20px;
+    border: 1px solid gray;
+}
+
+.pagination__button:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.pagination__button.selected {
+    background-color: skyblue;
+}
