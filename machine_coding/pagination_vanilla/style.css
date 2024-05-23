@@ -1,0 +1,17 @@
+.app {
+    margin: 20px;
+    width: 100vw;
+}
+
+.products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.product__card {
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
