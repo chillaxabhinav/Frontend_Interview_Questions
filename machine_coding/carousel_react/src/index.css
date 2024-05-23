@@ -1,3 +1,44 @@
 * {
     box-sizing: border-box;
 }
+
+.carousel-container {
+    height: 50vh;
+    width: 50vw;
+    text-align: center;
+    /* overflow: hidden; */
+}
+
+.carousel {
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.images-container {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s ease-in-out;
+}
+
+.btn {
+    position: absolute;
+    color: black;
+    background-color: white;
+    font-size: 20px;
+    top: 0;
+}
+
+.prev {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}

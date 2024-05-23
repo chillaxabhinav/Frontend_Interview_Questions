@@ -8,12 +8,9 @@
 	- Focus on Accessibility
 */
 
-// import { useState } from 'react'
 import { useState } from "react";
 import Carousel from "./components/carousel";
 import { useEffect } from "react";
-
-//https://jsonplaceholder.typicode.com/photos?_limit=8
 
 function App() {
 	const [loading, setLoading] = useState(false);
@@ -24,7 +21,6 @@ function App() {
 			setLoading(true);
 			const response = await fetch(`https://jsonplaceholder.typicode.com/photos?_limit=${limit}`);
 			const imagesData = await response.json();
-			console.log(imagesData);
 			setImages(imagesData);
 		} catch (e) {
 			console.log("Error fetching images ---> ", e);
@@ -42,8 +38,6 @@ function App() {
 			<Carousel
 				images={images}
 				isLoading={loading}
-				// imagePerSlide={}
-				// imageLimit={}
 			/>
 		</div>
 	)
