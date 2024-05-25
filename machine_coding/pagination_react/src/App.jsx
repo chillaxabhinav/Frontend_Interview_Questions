@@ -87,7 +87,7 @@ function App() {
 					{[...Array(totalPages)].map((_, i) => {
 						const selected = (i+1) === currentPage
 						return (
-							<span className={`pgn_btn${selected ? ' selected' : ''}`} data-id={i+1}>
+							<span className={`pgn_btn${selected ? ' selected' : ''}`} data-id={i+1} key={i}>
 								{i + 1}
 							</span>
 						)
