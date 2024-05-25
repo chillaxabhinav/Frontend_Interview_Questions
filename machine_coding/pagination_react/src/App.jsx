@@ -14,13 +14,14 @@ function App() {
 	const fetchProducts = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch('https://dummyjson.com/products?limit=100');
+			const res = await fetch(`https://dummyjson.com/products?limit=${productsPerPage}&skip=${(currentPage * productsPerPage) - productsPerPage}`);
 			const data = await res.json();
 			if (data && data.products && Array.isArray(data.products)) {
 				setProducts(data.products);
-				const totalProducts = data.products.length;
+				const totalProducts = data.total;
 				const lastPage = totalProducts % productsPerPage;
-				setTotalPages((totalProducts/productsPerPage) + (lastPage > 0 ? 1 : 0));
+				const totalFirst = Math.floor(totalProducts/productsPerPage);
+				setTotalPages(totalFirst + (lastPage > 0 ? 1 : 0));
 			} else {
 				setProducts([]);
 			}
@@ -34,7 +35,7 @@ function App() {
 
 	useEffect(() => {
 		fetchProducts()
-	}, []);
+	}, [currentPage]);
 
 	const onPageChange = (e) => {
 		const pageId = e.target.getAttribute('data-id');
@@ -64,7 +65,7 @@ function App() {
 	return (
 		<>
 			<div className="products">
-				{products.slice((currentPage * productsPerPage) - productsPerPage, currentPage * productsPerPage).map(product => {
+				{products.map(product => {
 					return (
 						<div className="product_card" key={product.id}>
 							<div>
