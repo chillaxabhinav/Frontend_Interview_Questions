@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import './app.css';
 
+import Pagination from "./components/pagination";
+
 function App() {
 	const [products, setProducts] = useState([]);
 
@@ -19,9 +21,8 @@ function App() {
 			if (data && data.products && Array.isArray(data.products)) {
 				setProducts(data.products);
 				const totalProducts = data.total;
-				const lastPage = totalProducts % productsPerPage;
-				const totalFirst = Math.floor(totalProducts/productsPerPage);
-				setTotalPages(totalFirst + (lastPage > 0 ? 1 : 0));
+				const totalPagesCalc = Math.ceil(totalProducts/productsPerPage);
+				setTotalPages(totalPagesCalc);
 			} else {
 				setProducts([]);
 			}
@@ -36,15 +37,6 @@ function App() {
 	useEffect(() => {
 		fetchProducts()
 	}, [currentPage]);
-
-	const onPageChange = (e) => {
-		const pageId = e.target.getAttribute('data-id');
-		if (!pageId) return;
-		const intPageId = parseInt(pageId);
-		if (intPageId === -2) setCurrentPage((prev) => prev - 1);
-		else if (intPageId === -1) setCurrentPage((prev) => prev + 1);
-		else setCurrentPage(intPageId);
-	}
 
 	if (loading) {
 		return (
@@ -79,26 +71,11 @@ function App() {
 				})}
 			</div>
 			{products.length > 0 && (
-				<div className="pagination" onClick={(e) => onPageChange(e)}>
-					{currentPage !== 1 && (
-						<span className="pgn_btn" data-id={-2}>
-							⏮️
-						</span>
-					)}
-					{[...Array(totalPages)].map((_, i) => {
-						const selected = (i+1) === currentPage
-						return (
-							<span className={`pgn_btn${selected ? ' selected' : ''}`} data-id={i+1} key={i}>
-								{i + 1}
-							</span>
-						)
-					})}
-					{currentPage !== totalPages && (
-						<span className="pgn_btn" data-id={-1}>
-							⏭️
-						</span>
-					)}
-				</div>
+				<Pagination
+					setCurrentPage={setCurrentPage}
+					currentPage={currentPage}
+					totalPages={totalPages}
+				/>
 			)}
 		</>
 	);
