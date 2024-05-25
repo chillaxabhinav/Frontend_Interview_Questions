@@ -75,6 +75,11 @@ function App() {
 					})}
 				</div>
 			)}
+			{loading && (
+				<h3>
+					loading...
+				</h3>
+			)}
 		</div>
 	);
 };
