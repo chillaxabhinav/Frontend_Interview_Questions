@@ -32,7 +32,6 @@ function App() {
 			setLoading(true);
 			const resp = await fetch(`https://dummyjson.com/products?limit=${page*10}`);
 			const data = await resp.json();
-			setPage((prev) => prev + 1);
 			setProducts(data);
 		} catch (e) {
 			console.log('error in fetching --> ', e);
@@ -43,21 +42,21 @@ function App() {
 
 	useEffect(() => {
 		fetchProducts();
-	}, []);
+	}, [page]);
 
 	const handleScroll = throttle(() => {
 		if (
 			(window.innerHeight + document.documentElement.scrollTop + 500) > document.documentElement.offsetHeight
 			&& !loading
 		) {
-			fetchProducts();
+			setPage((prev) => prev + 1);
 		}
 	}, 500);
 
 	useEffect(() => {
 		document.addEventListener('scroll', handleScroll);
 		return () => document.removeEventListener('scroll', handleScroll);
-	}, [handleScroll]);
+	}, []);
 
 	const { products: allProducts } = products;
 
