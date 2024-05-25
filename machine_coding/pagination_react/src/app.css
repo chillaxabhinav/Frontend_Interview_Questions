@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.products {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.product_card {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pagination {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.pgn_btn {
+    padding: 20px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.pgn_btn:hover {
+    background-color: aliceblue;
+}
+
+.pgn_btn.selected {
+    background-color: skyblue;
+}
