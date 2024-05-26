@@ -5,3 +5,61 @@
     box-sizing: border-box;
 }
 
+.layout {
+    margin: 20px;
+}
+
+a {
+    text-decoration: inherit;
+    font-size: 16px;
+    padding: 5px;
+    color: aliceblue;
+    background-color: gray;
+}
+
+.active {
+    background-color: black;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.view_comments {
+    background-color: white;
+    border: 1px solid black;
+    width: 15%;
+    font-size: 12px;
+    color: black;
+    cursor: pointer;
+}
+
+.view_comments:hover {
+    background-color: aliceblue;
+}
+
+.post_comments {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 1px solid black;
+    gap: 10px;
+    border-radius: 5px;
+}
