@@ -6,7 +6,8 @@ const emojis = {
 };
 
 const Folder = (props) => {
-    const { explorer } = props;
+    const { explorer, handleInsertNode } = props;
+
     const [expand, setExpand] = useState(false);
     const [showInput, setShowInput] = useState({
         visible: false,
@@ -28,6 +29,7 @@ const Folder = (props) => {
     const onAddFolder = (e) => {
         if (e.keyCode !== 13 || !e.target.value) return;
         // add folder or file
+        handleInsertNode(explorer.id, e.target.value, showInput.isFolder);
         setShowInput((prev) => {
             return {
                 ...prev,
@@ -68,7 +70,7 @@ const Folder = (props) => {
                     )}
                     {explorer.items.map(item => {
                         return (
-                            <Folder key={item.id} explorer={item} />
+                            <Folder key={item.id} explorer={item} handleInsertNode={handleInsertNode} />
                         )
                     })}
                 </div>
