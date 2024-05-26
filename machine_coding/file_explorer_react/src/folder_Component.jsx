@@ -7,7 +7,6 @@ const emojis = {
 
 const Folder = (props) => {
     const { explorer } = props;
-
     const [expand, setExpand] = useState(false);
 
     if (explorer.isFolder) {
@@ -15,6 +14,14 @@ const Folder = (props) => {
             <>
                 <div key={explorer.id} className='folder' onClick={() => setExpand((prev) => !prev)}>
                     <span>{emojis.folder} {explorer.name}</span>
+                    <div className='folder-buttons'>
+                        <button>
+                            Add Folder
+                        </button>
+                        <button>
+                            Add File
+                        </button>
+                    </div>
                 </div>
                 <div className='folder-items' style={{ display: expand ? 'flex' : 'none' }}>
                     {explorer.items.map(item => {

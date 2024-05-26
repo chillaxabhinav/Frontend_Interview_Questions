@@ -10,6 +10,14 @@ body {
   border-radius: 5px;
   width: 50%;
   margin: 1px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.folder-buttons {
+  display: flex;
+  gap: 5px;
+  cursor: pointer;
 }
 
 .folder-items {
