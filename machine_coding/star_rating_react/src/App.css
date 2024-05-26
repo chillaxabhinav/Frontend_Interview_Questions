@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(30, 30, 30);
+  color: white;
+  font-family: sans-serif;
+}
+
+.star.hover {
+  cursor: pointer;
+  color: gold;
+}
+
+.star.active {
+  color: orange;
+}
