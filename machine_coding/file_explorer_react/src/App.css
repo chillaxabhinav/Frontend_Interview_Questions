@@ -14,6 +14,20 @@ body {
   justify-content: space-between;
 }
 
+.input-container {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 50%;
+  margin: 1px 0px;
+  display: flex;
+  gap: 5px;
+}
+
+.input-container__input {
+  width: 100%;
+}
+
 .folder-buttons {
   display: flex;
   gap: 5px;
