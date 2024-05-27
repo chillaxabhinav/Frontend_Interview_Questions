@@ -17,6 +17,13 @@ const Filters = () => {
                     })}
                 />
             </div>
+            <button
+                onClick={() => filterDispatch({
+                    type: 'CLEAR_FILTERS'
+                })}
+            >
+                Clear Filters
+            </button>
         </div>
     )
 };

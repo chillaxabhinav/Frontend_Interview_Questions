@@ -3,7 +3,7 @@ import { CommerceState } from '../context/context';
 import Home from './home';
 
 const AppLayout = () => {
-    const { filterDispatch } = CommerceState();
+    const { filterDispatch, filterState } = CommerceState();
     return (
         <div className='flex flex-col p-4 gap-5'>
             <div className='flex flex-row items-center justify-between font-mono'>
@@ -17,6 +17,7 @@ const AppLayout = () => {
                             type: 'FILTER_BY_SEARCH',
                             payload: e.target.value
                         })}
+                        value={filterState.FILTER_BY_SEARCH}
                     />
                 </div>
             </div>
