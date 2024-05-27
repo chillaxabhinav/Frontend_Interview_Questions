@@ -27,8 +27,19 @@ const CommerceProvider = ({ children }) => {
         fetchProducts();
     }, []);
 
+    const [filterState, filterDispatch] = useReducer(FilterReducer, {
+        // Number Rating, 0 means all, top: 5
+        BY_RATING: 0,
+        // TOPLOW, LOWTOP, NONE
+        SORT_BY_PRICE: 'NONE',
+        // ALL, OUT, IN
+        FILTER_BY_STOCK: 'ALL',
+        // Seach param
+        FILTER_BY_SEARCH: '',
+    });
+
     return (
-        <CommerceContext.Provider value={{ state, dispatch }}>
+        <CommerceContext.Provider value={{ state, dispatch, filterDispatch, filterState }}>
             {children}
         </CommerceContext.Provider>
     )
