@@ -1,8 +1,27 @@
+import { useEffect } from 'react';
 import { CommerceState } from '../context/context';
+import { useSearchParams } from 'react-router-dom';
 
 const Filters = () => {
     const { filterState, filterDispatch } = CommerceState();
-    console.log(filterState);
+
+    const [param, setParam] = useSearchParams();
+
+    useEffect(() => {
+        if (param.size) {
+            param.forEach((value, key) => {
+                filterDispatch({
+                    type: key,
+                    payload: value
+                })
+            })
+        }
+    }, []);
+
+    useEffect(() => {
+        setParam(filterState);
+    }, [filterState])
+
     return (
         <div className='flex flex-col gap-5'>
             <div className='flex flex-row gap-3 items-center'>
