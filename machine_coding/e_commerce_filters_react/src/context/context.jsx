@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 
-import { CommerceReducer } from './reducer';
+import { CommerceReducer, FilterReducer } from './reducer';
 
 const CommerceContext = createContext();
 

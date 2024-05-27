@@ -11,7 +11,7 @@ export const CommerceReducer = (state, action) => {
     }
 };
 
-export const FilterReducers = (state, action) => {
+export const FilterReducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
         // Number Rating
