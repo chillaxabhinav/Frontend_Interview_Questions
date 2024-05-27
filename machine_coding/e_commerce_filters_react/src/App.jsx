@@ -1,12 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import AppLayout from './pages/appLayout';
+
+const router = createBrowserRouter([
+	{
+		element: <AppLayout />,
+		path: '/',
+		children: []
+	}
+])
 
 function App() {
-	return (
-		<div>
-			
-		</div>
-	)
+	return <RouterProvider router={router} />
 }
 
 export default App;
