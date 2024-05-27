@@ -28,12 +28,8 @@ const CommerceProvider = ({ children }) => {
     }, []);
 
     const [filterState, filterDispatch] = useReducer(FilterReducer, {
-        // Number Rating, 0 means all, top: 5
-        BY_RATING: 0,
-        // TOPLOW, LOWTOP, NONE
-        SORT_BY_PRICE: 'NONE',
-        // ALL, OUT, IN
-        FILTER_BY_STOCK: 'ALL',
+        // ALL, INCLUDE
+        INCLUDE_OUT_OF_STOCK: true,
         // Seach param
         FILTER_BY_SEARCH: '',
     });

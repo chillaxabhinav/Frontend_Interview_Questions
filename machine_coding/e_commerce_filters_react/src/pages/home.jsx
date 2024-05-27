@@ -7,13 +7,20 @@ const Home = () => {
 
     const { state, filterState } = CommerceState();
 
-    const { BY_RATING, SORT_BY_PRICE, FILTER_BY_STOCK, FILTER_BY_SEARCH } = filterState;
+    const { INCLUDE_OUT_OF_STOCK, FILTER_BY_SEARCH } = filterState;
 
     const { products } = state;
 
     useEffect(() => {
-        setProductState(products);
-    }, [BY_RATING, SORT_BY_PRICE, FILTER_BY_SEARCH, FILTER_BY_STOCK, products]);
+        let filtered = products;
+        if (!INCLUDE_OUT_OF_STOCK) {
+            filtered = filtered.filter(product => product.inStock === true);
+        }
+        if (FILTER_BY_SEARCH !== "") {
+            filtered = filtered.filter(product => product.title.toLowerCase().includes(FILTER_BY_SEARCH.toLowerCase()));
+        }
+        setProductState(filtered);
+    }, [FILTER_BY_SEARCH, INCLUDE_OUT_OF_STOCK, products]);
 
     return (
         <div className='flex flex-row gap-2 h-[90vh]'>
