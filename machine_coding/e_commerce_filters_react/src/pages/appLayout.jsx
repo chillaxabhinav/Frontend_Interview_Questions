@@ -1,6 +1,5 @@
 import { CommerceState } from '../context/context';
-
-import Home from './home';
+import { Outlet } from 'react-router-dom';
 
 const AppLayout = () => {
     const { filterDispatch, filterState } = CommerceState();
@@ -21,7 +20,7 @@ const AppLayout = () => {
                     />
                 </div>
             </div>
-            <Home />
+            <Outlet />
         </div>
     )
 };
