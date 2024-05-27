@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import CtxProvider from './context/context';
 
 import AppLayout from './pages/appLayout';
 
@@ -11,7 +12,11 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-	return <RouterProvider router={router} />
+	return (
+		<CtxProvider>
+			<RouterProvider router={router} />
+		</CtxProvider>
+	)
 }
 
 export default App;
