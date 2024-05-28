@@ -1,0 +1,15 @@
+.col {
+    height: 90px;
+    width: 90px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.row {
+    display: flex;
+}
