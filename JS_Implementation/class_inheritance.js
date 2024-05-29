@@ -3,7 +3,7 @@ class Animal {
         this.name = name
     }
 
-    static sayName() {
+    sayName() {
         console.log("My name is", this.name);
     }
 }

@@ -6,6 +6,7 @@ class Shape {
 
 class Circle extends Shape {
     constructor(radius) {
+        super();
         this.radius = radius;
     }
 
@@ -16,6 +17,7 @@ class Circle extends Shape {
 
 class Square extends Shape {
     constructor(side) {
+        super();
         this.side = side;
     }
 
