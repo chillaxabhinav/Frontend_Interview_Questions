@@ -10,7 +10,7 @@ export const AccordionContainer = (props) => {
 };
 
 AccordionContainer.Accordion = (props) => {
-    const [ open, setOpen ] = useState(false);
+    const [ open, setOpen ] = useState(open ?? false);
 
     return (
         <div class='accordion'>

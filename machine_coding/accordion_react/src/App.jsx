@@ -4,10 +4,10 @@ function App() {
 	return (
 		<>
 			<AccordionContainer>
-				<AccordionContainer.Accordion label='Hello first heading'>
+				<AccordionContainer.Accordion label='Hello first heading' open={true} >
 					Hello
 				</AccordionContainer.Accordion>
-				<AccordionContainer.Accordion label='Hello second heading'>
+				<AccordionContainer.Accordion label='Hello second heading' open={true} >
 					second data
 				</AccordionContainer.Accordion>
 			</AccordionContainer>
