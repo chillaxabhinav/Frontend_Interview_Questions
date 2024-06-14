@@ -10,7 +10,7 @@ Promise.prototype.myAll = function(promises) {
         let pending = promises.length;
         if (Array.isArray(promises) && pending === 0) resolve(output);
         promises.forEach((promise, index) => {
-            promise
+            Promise.resolve(promise)
             .then(res => {
                 output[index] = res;
                 pending -= 1;
@@ -33,7 +33,7 @@ Array.prototype.myAllSettled = function(promises) {
         if (Array.isArray(promises) && promises.length === 0) resolve(output);
         let pending = promises.length;
         promises.forEach((promise, index) => {
-            promise.then(res => {
+            Promise.resolve(promise).then(res => {
                 output[index] = res;
                 pending -= 1
                 if (pending === 0) resolve(output);
@@ -56,7 +56,7 @@ Array.prototype.myRace = function(promises) {
         if (Array.isArray(promises) && promises.length === 0) resolve(undefined);
         // handle not array case as well
         promises.forEach((promise) => {
-            promise.then(res => resolve(res)).catch(err => reject(err)) 
+            Promise.resolve(promise).then(res => resolve(res)).catch(err => reject(err)) 
         })
     })
 }
@@ -72,7 +72,7 @@ Array.prototype.myAny = function(promises) {
         // handle not array case as well
         let pending = promises.length;
         promises.forEach((promise) => {
-            promise.then(res => resolve(res)).catch(() => {
+            Promise.resolve(promise).then(res => resolve(res)).catch(() => {
                 pending -= 1;
                 if (pending === 0) reject("All promises failed");
             }) 
