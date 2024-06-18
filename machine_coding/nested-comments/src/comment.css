@@ -1,0 +1,23 @@
+.comment {
+    border: 1px solid black;
+    width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  .comment_replies {
+    position: relative;
+    left: 40px;
+    flex-direction: column;
+  }
+  
+  .new_comment {
+    padding: 10px;
+  }
+  
