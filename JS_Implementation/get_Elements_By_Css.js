@@ -6,10 +6,10 @@ function getElementsByCss(prop, value, parent = document.body) {
     const element = children[i];
     const newOutput = getElementsByCss(prop, value, element);
     if (newOutput.length > 0) output.push.apply(output, newOutput);
-    const fontSize = window
+    const propertyValue = window
       .getComputedStyle(element, null)
       .getPropertyValue(prop);
-    if (fontSize === value) {
+    if (propertyValue === value) {
       output.push(element);
     }
   }
