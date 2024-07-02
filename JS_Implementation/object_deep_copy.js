@@ -1,34 +1,32 @@
-const deepCopy = (obj) => {
-    if (
-        obj === undefined ||
-        obj === null ||
-        typeof obj === 'number' ||
-        typeof obj === 'boolean' ||
-        typeof obj === 'string' ||
-        typeof obj === 'symbol' ||
-        typeof obj === 'function'
-    ) {
-        return obj
-    }
+function deepCopy(obj) {
+    // for primitive types
+    if (Object(obj) !== obj) return obj;
 
-    if (Array.isArray(obj)) return obj.slice();
+    if (obj instanceof Function) return obj;
+    if (obj instanceof Date) return new Date(obj);
+    if (obj instanceof RegExp) return new RegExp(obj);
 
-    const objKeys = Object.keys(obj);
-    const copy = {};
-    for (let i = 0; i < objKeys.length; i++) {
-        copy[objKeys[i]] = deepCopy(obj[objKeys[i]])
-    }
-    return copy;
-}
+    const result = Array.isArray(obj) ? [] : Object.create(Object.getPrototypeOf(obj));
 
-const test = {
-    a: 10,
-    b: {
-        c: [1, 2, 3],
-        d: function() {
-            console.log("d");
+    // Copying properties recursively for Object and Array
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            result[key] = deepCopy(obj[key]);
         }
     }
+
+    return result;
 }
 
-console.log(deepCopy(test))
+
+// const test = {
+//     a: 10,
+//     b: {
+//         c: [1, 2, 3],
+//         d: function() {
+//             console.log("d");
+//         }
+//     }
+// }
+
+// console.log(deepCopy(test))
